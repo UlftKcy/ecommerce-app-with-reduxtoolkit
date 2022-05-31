@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import BrandImg from "../assets/brand.svg";
-import {CgMenuRight} from "react-icons/cg";
+import { CgMenuRight } from "react-icons/cg";
+import { FaTimes } from "react-icons/fa";
 
 const Wrapper = styled.div`
     display:flex;
@@ -13,7 +14,7 @@ const BrandLink = styled.a`
     text-decoration:none;
     cursor:pointer;
 `
-const HamburgerMenü= styled.button`
+const HamburgerMenü = styled.button`
     visibility:hidden;
     border:0;
     @media (max-width: 768px) {
@@ -49,29 +50,77 @@ const SearchBar = styled.input`
       outline:none;
     }
 `
+const MobileWrapper = styled.div`
+    position:absolute;
+    left:0;
+    top:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background-color:#CFCFCF;
+    color:black;
+    z-index:1;
+    @media (min-width: 901px) {
+      visibility:hidden;
+    }
+`
+const MobileMenü =  styled.ul`
+    display:flex;
+    flex-direction:column;
+`
+const CancelMenü =  styled.button`
+    background-color:transparent;
+    border:0;
+    padding:2rem;
+`
+const MobileItem =  styled.li`
+    list-style-type:none;
+
+    padding:2rem 3rem;
+`
+
 const Navbar = () => {
-  return (
-    <Wrapper>
-    <BrandLink>
-        <BrandImage src={BrandImg} />
-    </BrandLink>
-    <HamburgerMenü><CgMenuRight size={30}/></HamburgerMenü>
-    <NavMenü>
-        <NavItem>
-            <NavItemLink>Home</NavItemLink>
-        </NavItem>
-        <NavItem>
-            <NavItemLink>Shop</NavItemLink>
-        </NavItem>
-        <NavItem>
-            <NavItemLink>Basket</NavItemLink>
-        </NavItem>
-        <NavItem>
-            <SearchBar type="text" placeholder='Arama...'/>
-        </NavItem>
-    </NavMenü>
-</Wrapper>
-  )
+    const [open, setOpen] = useState(true);
+
+    return (
+        <>
+            {open ? (
+                <Wrapper>
+                    <BrandLink>
+                        <BrandImage src={BrandImg} />
+                    </BrandLink>
+                    <HamburgerMenü onClick={() => setOpen(!open)}><CgMenuRight size={30} /></HamburgerMenü>
+                    <NavMenü>
+                        <NavItem>
+                            <NavItemLink>Home</NavItemLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavItemLink>Shop</NavItemLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavItemLink>Basket</NavItemLink>
+                        </NavItem>
+                        <NavItem>
+                            <SearchBar type="text" placeholder='Arama...' />
+                        </NavItem>
+                    </NavMenü>
+                </Wrapper>
+            ) : (
+                <MobileWrapper>
+                    <CancelMenü onClick={() => setOpen(!open)}><FaTimes size={30} /></CancelMenü>
+                    <MobileMenü>
+                        <MobileItem>
+                            <NavItemLink>Home</NavItemLink>
+                        </MobileItem>
+                        <MobileItem>
+                            <NavItemLink>Shop</NavItemLink>
+                        </MobileItem>
+                    </MobileMenü>
+                </MobileWrapper>
+            )}
+        </>
+
+    )
 }
 
 export default Navbar;
