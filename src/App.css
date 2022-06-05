@@ -1,12 +1,14 @@
 .App {
   text-align: center;
   background-color: #edeaea;
-  min-height: 100vh;
+  height: 80vh;
+  margin: 50px;
   border-radius: 30px;
 }
-@media screen and (max-width:900px) {
+@media screen and (max-width:600px) {
   .App{
     border-radius: 0;
     width: 100vw;
+    margin: 50px 0;
   }
 }

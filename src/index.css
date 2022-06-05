@@ -10,15 +10,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 50px;
   background-color: #CFCFCF;
   position: relative;
-}
-
-@media screen and (max-width:900px) {
-  body{
-    margin: 0;
-  }
+  width: 100%;
 }
 
 code {

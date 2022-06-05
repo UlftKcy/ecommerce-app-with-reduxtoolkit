@@ -4,9 +4,9 @@ import {BsFillBasket2Fill} from 'react-icons/bs';
 import {FiSearch} from "react-icons/fi";
 
 const RightBar = styled.div`
-    position:absolute;
+    position:fixed;
     right:0;
-    top:15rem;
+    top:12rem;
     min-height:30vh;
     border-top-left-radius:30px;
     border-bottom-left-radius:30px;
