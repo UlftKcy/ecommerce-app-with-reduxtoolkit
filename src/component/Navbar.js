@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 import Sidebar from './Sidebar';
 import styled from 'styled-components';
 import BrandImg from "../assets/brand.svg";
@@ -49,7 +50,7 @@ const NavItemLink = styled.a`
 
 const Navbar = () => {
     const [open, setOpen] = useState(true);
-
+    let navigate = useNavigate();
     return (
         <>
             {open ? (
@@ -59,10 +60,10 @@ const Navbar = () => {
                     </BrandLink>
                     <NavMenü>
                         <NavItem>
-                            <NavItemLink>Home</NavItemLink>
+                            <NavItemLink onClick={()=>navigate("/")}>Home</NavItemLink>
                         </NavItem>
                         <NavItem>
-                            <NavItemLink>Shop</NavItemLink>
+                            <NavItemLink onClick={()=>navigate("/shop")}>Shop</NavItemLink>
                         </NavItem>
                     </NavMenü>
                     <HamburgerMenü onClick={() => setOpen(!open)}><CgMenuRight size={30} /></HamburgerMenü>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BgImage from "../assets/BgImage.jpg";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 
 const BackgroundWrapper = styled.div`
     height:90%;
@@ -45,13 +46,14 @@ const ContentHome = styled.p`
     font-weight:bolder;
 `
 const HomePage = () => {
+    let navigate = useNavigate();
     return (
         <BackgroundWrapper style={{ backgroundImage: `url(${BgImage})` }}>
             <ContentWrapper>
                 <ContentHome>Furnish Your Home</ContentHome>
                 <ContentHome>Furnish Your Life</ContentHome>
             </ContentWrapper>
-            <Button>Shop Now <AiOutlineArrowRight size={20} style={iconStyle} /></Button>
+            <Button onClick={()=>navigate("/shop")}>Shop Now <AiOutlineArrowRight size={20} style={iconStyle} /></Button>
         </BackgroundWrapper>
     )
 }
