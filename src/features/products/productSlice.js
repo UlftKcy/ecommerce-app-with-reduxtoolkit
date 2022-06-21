@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const initialState = {
-    data:null,
+    product_datas:null,
     loading:false,
     error:"",
 }
@@ -23,7 +23,7 @@ const productSlice = createSlice({
         });
         builder.addCase(fetchProducts.fulfilled,(state,action)=>{
             state.loading = false;
-            state.data = action.payload;
+            state.product_datas = action.payload;
         });
         builder.addCase(fetchProducts.rejected,(state,action)=>{
             state.loading = false;
