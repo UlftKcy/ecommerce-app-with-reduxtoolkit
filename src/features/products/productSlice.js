@@ -7,6 +7,7 @@ const initialState = {
     loading:false,
     error:"",
 }
+
 export const fetchProducts = createAsyncThunk("fetchProducts",async()=>{
     const response = await axios.get("https://course-api.com/react-store-products");
     return response.data; 

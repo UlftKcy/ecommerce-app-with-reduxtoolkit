@@ -3,13 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../component/ProductCard";
 import { fetchProducts } from "../features/products/productSlice";
 import styled from "styled-components";
+import RightSidebar from "../component/RightSidebar";
+import Loading from "../component/Loading";
 
 const WrapperShop = styled.div`
+
+`
+const ShopContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 2rem 2rem;
-  margin:3rem;
+  padding:3rem;
 `;
 
 const Shop = () => {
@@ -24,13 +29,17 @@ const Shop = () => {
 
   return (
     <WrapperShop>
-      {loading && "Loading..."}
+      {loading && <Loading />}
       {error && error}
-      {product_datas &&
-        product_datas.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+      <ShopContainer>
+        {product_datas &&
+          product_datas.map((product) => (
+            <ProductCard product={product} key={product.id}/>
+          ))}
+        <RightSidebar />
+      </ShopContainer>
     </WrapperShop>
+
   );
 };
 
