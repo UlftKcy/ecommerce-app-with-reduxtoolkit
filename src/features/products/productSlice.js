@@ -3,9 +3,9 @@ import axios from "axios";
 
 
 const initialState = {
-    product_datas:null,
+    product_datas:[],
     loading:false,
-    error:"",
+    error:null,
 }
 
 export const fetchProducts = createAsyncThunk("fetchProducts",async()=>{

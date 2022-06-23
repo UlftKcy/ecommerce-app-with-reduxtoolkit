@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const CardBody = styled.div`
@@ -56,13 +57,14 @@ const Button = styled.button`
     }
 `
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <CardBody>
       <CardTitle>{product.name}</CardTitle>
       <CardImageBody>
         <CardImage src={product.image}></CardImage>
         <CardFooter>
-        <Button>Ekle</Button>
+        <Button onClick={()=>dispatch({type:"addProductToBasket",payload:product})}>Ekle</Button>
         <CardText>$ {product.price}</CardText>
         </CardFooter>
       </CardImageBody>
