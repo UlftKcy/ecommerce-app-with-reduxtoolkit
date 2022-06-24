@@ -50,10 +50,10 @@ const CartCountLabel = styled.span`
     bottom:10px;
     left:28px;
     font-size:1rem;
-    border:1px solid green;
-    background-color:green;
+    border:1px solid #FF7D1A;
+    background-color:#FF7D1A;
     color:#ffff;
-    padding:2px 6px;
+    padding:1px 6px;
     border-radius:50%;
 `
 const RightSidebar = () => {
