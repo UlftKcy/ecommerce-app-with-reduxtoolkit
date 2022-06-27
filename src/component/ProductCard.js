@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import {FaPlus,FaMinus} from "react-icons/fa";
 
 const CardBody = styled.div`
   width: 80%;
@@ -65,22 +66,47 @@ const Button = styled.button`
 `
 const IncrementBtn = styled.button`
     padding:4px 8px;
-    margin-right:15px;
+    margin-left:15px;
     border:0;
     cursor:pointer;
     color:#FF7D1A;
+    &:hover{
+      background-color:#FF7D1A;
+      color:#ffff;
+  }
 `
 const DecrementBtn = styled.button`
 padding:4px 8px;
-margin-left:15px;
+margin-right:15px;
 border:0;
 cursor:pointer;
 color:#FF7D1A;
+&:hover{
+  background-color:#FF7D1A;
+  color:#ffff;
+}
 `
 const SelectedProductCount = styled.span``
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
+  const [count,setCount] = useState(1);
+  const [disable,setDisable] = useState(true);
+
+  useEffect(()=>{
+    if(count === 1){
+      setDisable(true);
+    }
+  },[count]);
+
+  const incrementCount = ()=>{
+    setCount(count+1);
+    setDisable(false);
+  }
+  const decrementCount = ()=>{
+    setCount(count-1);
+  }
+  
   return (
     <CardBody>
       <CardTitle>{product.name}</CardTitle>
@@ -90,9 +116,9 @@ const ProductCard = ({ product }) => {
       <ProductPrice>$ {product.price}</ProductPrice>
       <CardFooter>
         <Counter>
-          <IncrementBtn>+</IncrementBtn>
-          <SelectedProductCount>0</SelectedProductCount>
-          <DecrementBtn>-</DecrementBtn>
+          <DecrementBtn disabled={disable} onClick={decrementCount}><FaMinus/></DecrementBtn>
+          <SelectedProductCount>{count}</SelectedProductCount>
+          <IncrementBtn onClick={incrementCount}><FaPlus/></IncrementBtn>
         </Counter>
         <Button onClick={()=>dispatch({type:"addProductToBasket",payload:product})}>Add To Cart</Button>
         </CardFooter>
