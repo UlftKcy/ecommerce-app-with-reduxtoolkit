@@ -1,8 +1,12 @@
 import { createSlice, createAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  products_in_cart: [],
-  count_products_in_cart: 0,
+  total_products_in_cart: [],
+  total_count_products_in_cart: 0,
+  
+  product_in_cart:[],
+  count_product_in_cart:0
+
   /* loading: false,
   error: null, */
 };
@@ -14,10 +18,10 @@ const cartSlice = createSlice({
   reducers: {},
   extraReducers: {
     [addProductToBasket]: (state, action) => {
-      return { 
-        products_in_cart: [...state.products_in_cart, action.payload],
-        count_products_in_cart: state.count_products_in_cart + 1
-    };
+        return {
+          total_products_in_cart: [...state.total_products_in_cart,action.payload],
+          total_count_products_in_cart: state.total_count_products_in_cart + action.count
+      };
     },
   },
 });

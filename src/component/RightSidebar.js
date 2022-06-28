@@ -57,7 +57,7 @@ const CartCountLabel = styled.span`
     border-radius:50%;
 `
 const RightSidebar = () => {
-    const count = useSelector(state=>state.cart.count_products_in_cart);
+    const count = useSelector(state=>state.cart.total_count_products_in_cart);
     let navigate = useNavigate();
     return (
         <RightBar>

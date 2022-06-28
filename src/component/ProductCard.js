@@ -93,20 +93,19 @@ const ProductCard = ({ product }) => {
   const [count,setCount] = useState(1);
   const [disable,setDisable] = useState(true);
 
-  useEffect(()=>{
-    if(count === 1){
-      setDisable(true);
-    }
-  },[count]);
-
   const incrementCount = ()=>{
     setCount(count+1);
     setDisable(false);
   }
   const decrementCount = ()=>{
     setCount(count-1);
+    if(count===2){
+      setDisable(true);
+    }
   }
-  
+ /*  const addToProduct  =()=> {
+    console.log(dispatch({type:"addProductToBasket",payload:product,count}))
+  } */
   return (
     <CardBody>
       <CardTitle>{product.name}</CardTitle>
@@ -120,8 +119,9 @@ const ProductCard = ({ product }) => {
           <SelectedProductCount>{count}</SelectedProductCount>
           <IncrementBtn onClick={incrementCount}><FaPlus/></IncrementBtn>
         </Counter>
-        <Button onClick={()=>dispatch({type:"addProductToBasket",payload:product})}>Add To Cart</Button>
-        </CardFooter>
+        <Button onClick={()=>dispatch({type:"addProductToBasket",payload:product,count})}>Add To Cart</Button>
+{/*         <Button onClick={addToProduct}>Add To Cart</Button>
+ */}        </CardFooter>
     </CardBody>
   );
 };
