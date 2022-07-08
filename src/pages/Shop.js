@@ -5,16 +5,26 @@ import { fetchProducts } from "../features/products/productSlice";
 import styled from "styled-components";
 import RightSidebar from "../component/RightSidebar";
 import Loading from "../component/Loading";
+import Breakpoint from "../responsive/Breakpoint";
 
-const WrapperShop = styled.div`
-
-`
+const WrapperShop = styled.div``;
 const ShopContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  gap: 2rem 2rem;
-  padding:3rem;
+  gap: 3rem 1rem;
+  padding: 3rem 1rem;
+  @media only screen and ${Breakpoint.device.xs} {
+    grid-template-columns: 1fr;
+  }
+  @media only screen and ${Breakpoint.device.sm} {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and ${Breakpoint.device.lg} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media only screen and ${Breakpoint.device.xl} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const Shop = () => {
@@ -34,12 +44,11 @@ const Shop = () => {
       <ShopContainer>
         {product_datas &&
           product_datas.map((product) => (
-            <ProductCard product={product} key={product.id}/>
+            <ProductCard product={product} key={product.id} />
           ))}
         <RightSidebar />
       </ShopContainer>
     </WrapperShop>
-
   );
 };
 
