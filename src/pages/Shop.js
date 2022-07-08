@@ -11,12 +11,12 @@ const WrapperShop = styled.div``;
 const ShopContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  gap: 3rem 1rem;
+  gap: 3rem 3rem;
   padding: 3rem 1rem;
-  @media only screen and ${Breakpoint.device.xs} {
+  @media only screen and ${Breakpoint.device.sm} {
     grid-template-columns: 1fr;
   }
-  @media only screen and ${Breakpoint.device.sm} {
+  @media only screen and ${Breakpoint.device.md} {
     grid-template-columns: 1fr 1fr;
   }
   @media only screen and ${Breakpoint.device.lg} {
@@ -24,6 +24,9 @@ const ShopContainer = styled.div`
   }
   @media only screen and ${Breakpoint.device.xl} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media only screen and ${Breakpoint.device.xxl} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 `;
 

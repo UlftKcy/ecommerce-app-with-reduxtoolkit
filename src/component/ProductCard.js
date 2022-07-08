@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Breakpoint from "../responsive/Breakpoint";
 
 const CardBody = styled.div`
-  width: 300px;
   margin: auto;
   color: #171a20;
   font-size: 2.2rem;
@@ -20,8 +19,11 @@ const CardBody = styled.div`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     cursor: pointer;
   }
-  @media only screen and ${Breakpoint.device.xsmax} {
-    width: 70%;
+  @media only screen and ${Breakpoint.device.smmin} {
+    width: 60%;
+  }
+  @media only screen and ${Breakpoint.device.md} {
+    width: 100%;
   }
 `;
 const CardTitle = styled.h6`
