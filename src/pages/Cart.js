@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import CheckoutDetail from "../component/CheckoutDetail";
 import ProductInCart from "../component/ProductInCart";
 
 const CartWrapper = styled.div`
@@ -15,7 +16,11 @@ const ShoppingCart = styled.div`
   padding:0 3rem;
 `;
 const Checkout = styled.div`
- 
+background-color:gray;
+color:#ffff;
+height:100vh;
+border-radius:10px;
+padding:0 1rem 2rem 1rem;
 `;
 const ShoppingCartHeader = styled.h3`
 margin-bottom:1rem;
@@ -35,10 +40,13 @@ const Cart = () => {
       <ShoppingCart>
         <ShoppingCartHeader>Shopping Cart</ShoppingCartHeader>
         {products.map((product) => (
-        <ProductInCart product={product} key={product.id} />
-      ))}
+          <ProductInCart product={product} key={product.id} />
+        ))}
       </ShoppingCart>
-      <Checkout><CheckoutHeader>Checkout</CheckoutHeader></Checkout>
+      <Checkout>
+        <CheckoutHeader>Checkout</CheckoutHeader>
+        <CheckoutDetail/>
+      </Checkout>
     </CartWrapper>
   );
 };
