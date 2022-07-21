@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { FaPlus, FaMinus,FaTrash } from "react-icons/fa";
+import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 
 const ProductInCartWrapper = styled.div`
   display: grid;
@@ -50,6 +50,7 @@ const RemoveProductButton = styled.button`
 border:0;
 cursor: pointer;
 color:red;
+background-color: transparent;
 `;
 
 const ProductInCart = ({ product }) => {
@@ -68,7 +69,7 @@ const ProductInCart = ({ product }) => {
         </ProductCountIncrease>
       </ProductCount>
       <ProductPrice>${product.price}</ProductPrice>
-      <RemoveProductButton><FaTrash size={25}/></RemoveProductButton>
+      <RemoveProductButton><FaTrash size={25} /></RemoveProductButton>
     </ProductInCartWrapper>
   );
 };

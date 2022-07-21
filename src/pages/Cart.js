@@ -18,9 +18,8 @@ const ShoppingCart = styled.div`
 const Checkout = styled.div`
 background-color:gray;
 color:#ffff;
-height:100vh;
 border-radius:10px;
-padding:0 1rem 2rem 1rem;
+padding:1rem 1rem 2rem 1rem;
 `;
 const ShoppingCartHeader = styled.h3`
 margin-bottom:1rem;

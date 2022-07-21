@@ -5,23 +5,24 @@ const CheckoutForm = styled.form`
     display: grid; 
     grid-template-columns: 1fr; 
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
-    gap: 0px; 
-    height:100%;
+    gap: 10px 0; 
+    margin:auto;
 `
 const CheckoutRow = styled.div`
     display:flex;
     flex-direction:column;
     align-content:center;
+    margin:auto 0;
 `
 const CheckoutLabel = styled.label`
     font-size:0.7rem;
     font-weight:bold;
     color:#dddd;
-    margin-bottom:5px;
     text-align:left;
 `
 const CheckoutInputGroup = styled.div`
 display:flex;
+margin-bottom:10px;
 
 `
 const InputRadio = styled.input`
@@ -31,14 +32,30 @@ const Input = styled.input`
     width:100%;
     padding:10px 20px;
 `
+const CheckoutButton = styled.button`
+    padding:10px 20px;
+    background-color:#ff7d1a;
+    color:#ffff;
+    font-weight:bolder;
+    border:0;
+    border-radius:5px;
+    cursor:pointer;
+    transition:background-color 0.5s ease;
+    &:hover{
+        background-color:#079307;
+    }
+`
 const CheckoutDetail = () => {
     return (
         <CheckoutForm>
             <CheckoutRow>
-                <CheckoutLabel>Card Type</CheckoutLabel>
                 <CheckoutInputGroup>
-                    <InputRadio type="radio" name="card_type"/>Master Card
-                    <InputRadio type="radio" name="card_type"/>Visa
+                    <InputRadio type="radio" name="card_type" checked />
+                    <CheckoutLabel>Master Card</CheckoutLabel>
+                </CheckoutInputGroup>
+                <CheckoutInputGroup>
+                    <InputRadio type="radio" name="card_type" />
+                    <CheckoutLabel>Visa</CheckoutLabel>
                 </CheckoutInputGroup>
             </CheckoutRow>
             <CheckoutRow>
@@ -60,7 +77,7 @@ const CheckoutDetail = () => {
                 </CheckoutInputGroup>
             </CheckoutRow>
             <CheckoutRow>
-                <button>Checkout</button>
+                <CheckoutButton>Checkout</CheckoutButton>
             </CheckoutRow>
         </CheckoutForm>
     )
