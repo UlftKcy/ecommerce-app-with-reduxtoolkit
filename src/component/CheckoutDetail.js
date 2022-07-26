@@ -50,7 +50,7 @@ const CheckoutDetail = () => {
         <CheckoutForm>
             <CheckoutRow>
                 <CheckoutInputGroup>
-                    <InputRadio type="radio" name="card_type" checked />
+                    <InputRadio type="radio" name="card_type" />
                     <CheckoutLabel>Master Card</CheckoutLabel>
                 </CheckoutInputGroup>
                 <CheckoutInputGroup>

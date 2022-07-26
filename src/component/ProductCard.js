@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import Breakpoint from "../responsive/Breakpoint";
+import { addProductToBasket } from "../features/products/cartSlice";
 
 const CardBody = styled.div`
   margin: auto;
@@ -108,9 +109,6 @@ const ProductCard = ({ product }) => {
       setDisable(true);
     }
   };
-  /*  const addToProduct  =()=> {
-    console.log(dispatch({type:"addProductToBasket",payload:product,count}))
-  } */
   return (
     <CardBody>
       <CardTitle>{product.name}</CardTitle>
@@ -130,13 +128,12 @@ const ProductCard = ({ product }) => {
         </Counter>
         <Button
           onClick={() =>
-            dispatch({ type: "addProductToBasket", payload: product, count })
+            /* dispatch({ type: "addProductToBasket", payload: product, count }) */
+            dispatch(addProductToBasket(product))
           }
         >
           Add To Cart
         </Button>
-        {/*         <Button onClick={addToProduct}>Add To Cart</Button>
-         */}{" "}
       </CardFooter>
     </CardBody>
   );

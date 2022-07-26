@@ -1,29 +1,26 @@
-import { createSlice, createAction } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  total_products_in_cart: [],
-  total_count_products_in_cart: 0,
-  
-  product_in_cart:[],
-  count_product_in_cart:0
+  cartProducts: [],
+  totalProducts: 0,
 
   /* loading: false,
   error: null, */
 };
-const addProductToBasket = createAction("addProductToBasket");
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
-  extraReducers: {
-    [addProductToBasket]: (state, action) => {
-        return {
-          total_products_in_cart: [...state.total_products_in_cart,action.payload],
-          total_count_products_in_cart: state.total_count_products_in_cart + action.count
-      };
-    },
-  },
+  reducers: {
+    addProductToBasket : (state,action)=>{
+      state.cartProducts = [...state.cartProducts,action.payload]
+    }
+  }
+    
 });
-
+export const {addProductToBasket} = cartSlice.actions;
 export default cartSlice.reducer;
+/* return {
+  total_products_in_cart: [...state.total_products_in_cart,action.payload],
+  total_count_products_in_cart: state.total_count_products_in_cart + action.count
+}; */
