@@ -54,7 +54,6 @@ background-color: transparent;
 `;
 
 const ProductInCart = ({ product }) => {
-  console.log(product);
   return (
     <ProductInCartWrapper>
       <ProductImage src={product.image}></ProductImage>
