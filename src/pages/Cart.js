@@ -30,10 +30,6 @@ margin-bottom:1rem;
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.cartProducts);
-  const product_count = useSelector(
-    (state) => state.cart.totalProducts
-  );
-  console.log("products", products, "product_count", product_count);
   return (
     <CartWrapper>
       <ShoppingCart>

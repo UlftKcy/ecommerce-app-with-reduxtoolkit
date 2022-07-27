@@ -1,9 +1,8 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartProducts: [],
   totalProducts: 0,
-
   /* loading: false,
   error: null, */
 };
@@ -12,15 +11,27 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProductToBasket : (state,action)=>{
-      state.cartProducts = [...state.cartProducts,action.payload]
-    }
+    addProductToBasket(state, { payload }) {
+      let existedProduct = state.cartProducts.find((cartProduct) => cartProduct.id === payload.product.id)
+
+      if (existedProduct) {
+        state.cartProducts = state.cartProducts.map((cartProduct) =>
+          cartProduct.id === payload.product.id
+            ? {
+              ...cartProduct,
+              count: cartProduct.count + payload.count
+            }
+            : cartProduct
+        );
+      } else {
+        state.cartProducts = [...state.cartProducts, {
+          ...payload.product,
+          count: payload.count
+        }];
+      }
+      state.totalProducts = state.totalProducts + payload.count;
+    },
   }
-    
 });
-export const {addProductToBasket} = cartSlice.actions;
+export const { addProductToBasket, totalProductsToBasket } = cartSlice.actions;
 export default cartSlice.reducer;
-/* return {
-  total_products_in_cart: [...state.total_products_in_cart,action.payload],
-  total_count_products_in_cart: state.total_count_products_in_cart + action.count
-}; */

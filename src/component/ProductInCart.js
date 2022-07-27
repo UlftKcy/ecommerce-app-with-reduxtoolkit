@@ -63,7 +63,7 @@ const ProductInCart = ({ product }) => {
         <ProductCountDecrease>
           <FaMinus />
         </ProductCountDecrease>
-        1
+        {product.count}
         <ProductCountIncrease>
           <FaPlus />
         </ProductCountIncrease>

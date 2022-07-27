@@ -128,8 +128,7 @@ const ProductCard = ({ product }) => {
         </Counter>
         <Button
           onClick={() =>
-            /* dispatch({ type: "addProductToBasket", payload: product, count }) */
-            dispatch(addProductToBasket(product))
+            dispatch(addProductToBasket({product,count}))
           }
         >
           Add To Cart
