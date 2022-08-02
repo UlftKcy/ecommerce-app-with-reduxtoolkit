@@ -1,5 +1,9 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from 'styled-components';
+import Swal from "sweetalert2";
+import { submitCart } from '../features/products/cartSlice';
 
 const CheckoutForm = styled.form`
     display: grid; 
@@ -46,11 +50,25 @@ const CheckoutButton = styled.button`
     }
 `
 const CheckoutDetail = () => {
+    let navigate = useNavigate();
+    const dispatch = useDispatch()
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(submitCart());
+        Swal.fire({
+            title: "Success",
+            text: "Alert successful",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(function () {
+            navigate("/");
+          });
+    }
     return (
-        <CheckoutForm>
+        <CheckoutForm onSubmit={handleSubmit}>
             <CheckoutRow>
                 <CheckoutInputGroup>
-                    <InputRadio type="radio" name="card_type" />
+                    <InputRadio type="radio" name="card_type" defaultChecked={true}/>
                     <CheckoutLabel>Master Card</CheckoutLabel>
                 </CheckoutInputGroup>
                 <CheckoutInputGroup>

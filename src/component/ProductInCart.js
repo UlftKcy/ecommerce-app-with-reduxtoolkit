@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { FaTrash } from "react-icons/fa";
+import { removeProductFromBasket } from "../features/products/cartSlice";
 
 const ProductInCartWrapper = styled.div`
   display: grid;
@@ -22,30 +24,7 @@ const ProductImage = styled.img`
 const ProductName = styled.h4``;
 const ProductCount = styled.div``;
 const ProductPrice = styled.span``;
-const ProductCountDecrease = styled.button`
-  padding: 5px 10px;
-  margin: 0 10px;
-  border: 0;
-  cursor: pointer;
-  background-color: #ff7d1a;
-  color: #ffff;
-  border-radius: 5px;
-  &:hover {
-    opacity: 0.9;
-  }
-`;
-const ProductCountIncrease = styled.button`
-  padding: 5px 10px;
-  margin: 0 10px;
-  border: 0;
-  cursor: pointer;
-  background-color: #ff7d1a;
-  color: #ffff;
-  border-radius: 5px;
-  &:hover {
-    opacity: 0.9;
-  }
-`;
+
 const RemoveProductButton = styled.button`
 border:0;
 cursor: pointer;
@@ -54,21 +33,16 @@ background-color: transparent;
 `;
 
 const ProductInCart = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <ProductInCartWrapper>
       <ProductImage src={product.image}></ProductImage>
       <ProductName>{product.name}</ProductName>
       <ProductCount>
-        <ProductCountDecrease>
-          <FaMinus />
-        </ProductCountDecrease>
         {product.count}
-        <ProductCountIncrease>
-          <FaPlus />
-        </ProductCountIncrease>
       </ProductCount>
       <ProductPrice>${product.price}</ProductPrice>
-      <RemoveProductButton><FaTrash size={25} /></RemoveProductButton>
+      <RemoveProductButton onClick={()=>dispatch(removeProductFromBasket(product))}><FaTrash size={25} /></RemoveProductButton>
     </ProductInCartWrapper>
   );
 };
