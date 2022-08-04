@@ -56,7 +56,7 @@ const CheckoutDetail = () => {
     dispatch(submitCart());
     Swal.fire({
       title: "Success",
-      text: "Alert successful",
+      text: "Your order has been successfully completed",
       icon: "success",
       confirmButtonText: "OK",
     }).then(function () {
