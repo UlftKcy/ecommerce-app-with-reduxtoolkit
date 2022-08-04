@@ -4,19 +4,23 @@ import styled from "styled-components";
 import CheckoutDetail from "../component/CheckoutDetail";
 import EmptyCart from "../component/EmptyCart";
 import ProductInCart from "../component/ProductInCart";
+import Breakpoint from "../responsive/Breakpoint";
 
 const CartWrapper = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 3rem;
+  @media only screen and ${Breakpoint.device.lg} {
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+  }
 `;
 const ShoppingCart = styled.div`
-  padding: 0 3rem;
 `;
 const Checkout = styled.div`
-  background-color: gray;
+  background-color: #2C3333;
   color: #ffff;
   border-radius: 10px;
   padding: 1rem 1rem 2rem 1rem;
@@ -31,6 +35,9 @@ const CheckoutHeader = styled.h3`
 const GeneralTotalWrapper = styled.div`
   float: right;
   width: 50%;
+  @media only screen and ${Breakpoint.device.smmax} {
+    width: 100%;
+  }
 `;
 
 const GeneralTotal = styled.div`
@@ -85,7 +92,7 @@ const Cart = () => {
       <Checkout>
         <CheckoutHeader>Checkout</CheckoutHeader>
         <CheckoutDetail />
-      </Checkout>{" "}
+      </Checkout>
     </CartWrapper>
   ) : (
     <EmptyCart />

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 import styled from 'styled-components';
 import BrandImg from "../assets/brand.svg";
 import { CgMenuRight } from "react-icons/cg";
@@ -60,7 +61,7 @@ const MobileItem = styled.li`
 `
 
 const Sidebar = ({open,setOpen}) => {
-
+    let navigate = useNavigate();
     return (
                 <>
                     <Wrapper>
@@ -73,10 +74,10 @@ const Sidebar = ({open,setOpen}) => {
                         <CancelMenü onClick={() => setOpen(!open)}><FaTimes size={30} /></CancelMenü>
                         <MobileMenü>
                             <MobileItem>
-                                <NavItemLink>Home</NavItemLink>
+                                <NavItemLink onClick={()=>navigate("/")}>Home</NavItemLink>
                             </MobileItem>
                             <MobileItem>
-                                <NavItemLink>Shop</NavItemLink>
+                                <NavItemLink onClick={()=>navigate("/shop")}>Shop</NavItemLink>
                             </MobileItem>
                         </MobileMenü>
                     </SidebarWrapper>

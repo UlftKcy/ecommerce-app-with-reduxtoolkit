@@ -7,7 +7,7 @@ import {BsFillBasket2Fill} from 'react-icons/bs';
 const RightBar = styled.div`
     position:fixed;
     right:0;
-    top:12rem;
+    top:4.5rem;
     border-top-left-radius:30px;
     border-bottom-left-radius:30px;
     background-color:#ffff;

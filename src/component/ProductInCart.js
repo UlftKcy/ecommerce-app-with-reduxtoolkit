@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { removeProductFromBasket } from "../features/products/cartSlice";
+import Breakpoint from "../responsive/Breakpoint";
 
 const ProductInCartWrapper = styled.div`
   display: grid;
@@ -14,12 +15,18 @@ const ProductInCartWrapper = styled.div`
   border: 1px solid #d6d6d6;
   border-radius:25px;
   margin-bottom:1rem;
+  @media only screen and ${Breakpoint.device.smmax} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const ProductImage = styled.img`
   width: 70px;
   height: 70px;
   margin: auto;
+  @media only screen and ${Breakpoint.device.smmax} {
+    display:none;
+  }
 `;
 const ProductName = styled.h4``;
 const ProductCount = styled.div``;
